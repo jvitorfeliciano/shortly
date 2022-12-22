@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "../../components/Button/Button";
+import Container from "../../components/Container/Container";
 import Input from "../../components/Input /Input";
 import Logo from "../../components/Logo/Logo";
 
@@ -17,14 +18,6 @@ export default function SignUpPage() {
     </Container>
   );
 }
-
-const Container = styled.main`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Form = styled.form`
   width: 55vw;

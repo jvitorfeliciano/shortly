@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import trophy from "../../assets/images/trophy.png";
+import Container from "../../components/Container/Container";
 import Logo from "../../components/Logo/Logo";
 import ClassificationData from "./ClassificationData";
 
@@ -17,14 +18,6 @@ export default function RankingPage() {
     </Container>
   );
 }
-
-const Container = styled.main`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const RankingLogo = styled.section`
   display: flex;
