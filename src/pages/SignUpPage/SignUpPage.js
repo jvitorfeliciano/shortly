@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Form } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
 import Input from "../../components/Input /Input";
@@ -18,12 +18,3 @@ export default function SignUpPage() {
     </Container>
   );
 }
-
-const Form = styled.form`
-  width: 55vw;
-  height: auto;
-  margin-top: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
