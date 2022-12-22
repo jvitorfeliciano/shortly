@@ -1,14 +1,12 @@
 import styled from "styled-components";
-import logo from "../../assets/images/logo.png";
 import trophy from "../../assets/images/trophy.png";
+import Logo from "../../components/Logo/Logo";
 import ClassificationData from "./ClassificationData";
 
 export default function RankingPage() {
   return (
     <Container>
-      <Logo>
-        <img src={logo} alt="logo" />
-      </Logo>
+      <Logo />
       <RankingLogo>
         <img src={trophy} alt="trophy" />
         <h2>Ranking</h2>
@@ -26,13 +24,6 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const Logo = styled.section`
-  img {
-    width: 100%;
-    height: auto;
-  }
 `;
 
 const RankingLogo = styled.section`

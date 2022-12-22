@@ -49,7 +49,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body{
+*{
 	box-sizing: border-box;
 }
 
