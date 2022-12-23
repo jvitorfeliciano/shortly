@@ -5,7 +5,7 @@ import StyledLink from "../StyledLink/StyledLink";
 
 export default function Header() {
   const { userData } = useContext(UserContext);
- console.log(userData)
+  
   return (
     <Container>
       {userData && <Greetings>Seja bem-vindo(a), {userData.name}!</Greetings>}
@@ -28,7 +28,7 @@ export default function Header() {
             <StyledLink to="/ranking">
               <div>Ranking</div>
             </StyledLink>
-            <StyledLink >
+            <StyledLink>
               <div>Sair</div>
             </StyledLink>
           </>

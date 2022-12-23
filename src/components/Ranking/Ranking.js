@@ -10,7 +10,7 @@ import UserContext from "../../contexts/UserContext";
 export default function Ranking() {
   const [ranking, setRanking] = useState(null);
   const { userData } = useContext(UserContext);
-  console.log("RANKIIIING");
+
   useEffect(() => {
     const getRanking = async () => {
       try {
