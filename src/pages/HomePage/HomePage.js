@@ -44,11 +44,8 @@ export default function HomePage() {
     const getUrls = async () => {
       try {
         const res = await api.getUserUrls(userData.token);
-        if (res.data) {
-          setUrls(res.data.shortenedUrls);
-        } else {
-          setUrls([]);
-        }
+        setUrls(res.data.shortenedUrls);
+        
       } catch (err) {
         Swal.fire({
           icon: "error",

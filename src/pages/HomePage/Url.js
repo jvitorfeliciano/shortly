@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
-import Swal from "sweetalert2";
 import api from "../../services/api";
 
 export default function Url({
