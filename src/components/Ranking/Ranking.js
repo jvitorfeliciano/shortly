@@ -1,8 +1,30 @@
 import styled from "styled-components";
 import ClassificationData from "./ClassificationData";
 import trophy from "../../assets/images/trophy.png";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import api from "../../services/api";
 
 export default function Ranking() {
+  const [ranking, setRanking] = useState(null);
+
+  useEffect(() => {
+    const getRanking = async () => {
+      try {
+        const res = await api.getRanking();
+        setRanking(res.data);
+      } catch (err) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+      }
+    };
+
+    getRanking();
+  }, []);
+
   return (
     <>
       <RankingLogo>
