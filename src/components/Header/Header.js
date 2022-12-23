@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import StyledLink from "../StyledLink/StyledLink";
 
 export default function Header() {
   return (
     <Container>
       <Greetings>Oieee</Greetings>
       <Menu>
-        <div>Entrar</div>
-        <div>Cadastrar</div>
+        <StyledLink to="/sign-in">
+          <div>Entrar</div>
+        </StyledLink>
+        <StyledLink to="/sign-up">
+          <div>Cadastrar</div>
+        </StyledLink>
       </Menu>
     </Container>
   );
