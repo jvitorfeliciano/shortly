@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function Url() {
+export default function Url({id, shortUrl, url, visitCount}) {
   return (
     <UrlContainer>
       <Right>
-        <div>https://www.driven.com.br</div>
-        <div>e4231A</div>
-        <div>Quantidade de visitantes: 27100</div>
+        <div>{url}</div>
+        <div>{shortUrl}</div>
+        <div>Quantidade de visitantes: {visitCount}</div>
       </Right>
       <Left>
         <FaTrashAlt />

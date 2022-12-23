@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
@@ -13,7 +13,9 @@ import Loader from "../../components/Loader/Loader";
 
 export default function HomePage() {
   const [url, setUrl] = useState("");
+  const [urls, setUrls] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [updateUrls, setUpdateUrls] = useState(false);
 
   const { userData } = useContext(UserContext);
 
@@ -24,9 +26,10 @@ export default function HomePage() {
     const body = { url };
 
     try {
-      const res = await api.shortenUrl(body, userData.token);
+      await api.shortenUrl(body, userData.token);
       setIsLoading(false);
-      console.log(res);
+      setUpdateUrls(!updateUrls);
+      setUrl("");
     } catch (err) {
       Swal.fire({
         icon: "error",
@@ -37,6 +40,27 @@ export default function HomePage() {
     }
   }
 
+  useEffect(() => {
+    const getUrls = async () => {
+      try {
+        const res = await api.getUserUrls(userData.token);
+        setUrls(res.data.shortenedUrls);
+      } catch (err) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+      }
+    };
+    if (userData?.token) {
+      getUrls();
+    }
+  }, [updateUrls]);
+
+  if (userData?.token && !urls) {
+    return <Loader size={60} color={"green"} />;
+  }
   return (
     <Container>
       <Logo />
@@ -65,9 +89,14 @@ export default function HomePage() {
             </Button>
           </ShortUrl>
           <UrlsContainer>
-            <Url />
-            <Url />
-            <Url />
+            {urls.map((url) => (
+              <Url
+                id={url.id}
+                url={url.url}
+                shortUrl={url.shortUrl}
+                visitCount={url.visitCount}
+              />
+            ))}
           </UrlsContainer>
         </>
       )}
