@@ -5,17 +5,34 @@ import StyledLink from "../StyledLink/StyledLink";
 
 export default function Header() {
   const { userData } = useContext(UserContext);
- 
+
   return (
     <Container>
-      <Greetings>Oieee</Greetings>
+      {userData && <Greetings>Oieee</Greetings>}
       <Menu>
-        <StyledLink to="/sign-in">
-          <div>Entrar</div>
-        </StyledLink>
-        <StyledLink to="/sign-up">
-          <div>Cadastrar</div>
-        </StyledLink>
+        {!userData && (
+          <>
+            <StyledLink to="/sign-in">
+              <div>Entrar</div>
+            </StyledLink>
+            <StyledLink to="/sign-up">
+              <div>Cadastrar</div>
+            </StyledLink>
+          </>
+        )}
+        {userData && (
+          <>
+            <StyledLink to="/">
+              <div>Home</div>
+            </StyledLink>
+            <StyledLink to="/ranking">
+              <div>Ranking</div>
+            </StyledLink>
+            <StyledLink >
+              <div>Sair</div>
+            </StyledLink>
+          </>
+        )}
       </Menu>
     </Container>
   );
