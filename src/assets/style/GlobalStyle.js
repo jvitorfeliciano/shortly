@@ -54,6 +54,7 @@ table {
 }
 body{
 	overflow-x: hidden;
+
 }
 `;
 export default GlobalStyle;

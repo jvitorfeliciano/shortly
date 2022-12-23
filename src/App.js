@@ -21,7 +21,7 @@ function App() {
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
       <BrowserRouter>
-        <GlobalStyle />;
+        <GlobalStyle />
         <Header />
         <Routes>
           <Route path={"/"} element={<HomePage />} />

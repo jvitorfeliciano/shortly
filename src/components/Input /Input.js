@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Input = styled.input`
-  width:100%;
+  width: 100%;
   height: 60px;
   padding: 21px;
   margin-bottom: 25px;
@@ -16,6 +16,9 @@ const Input = styled.input`
   line-height: 18px;
   ::placeholder {
     color: #9c9c9c;
+  }
+  :focus {
+    outline-color: #80cc74;
   }
 `;
 
