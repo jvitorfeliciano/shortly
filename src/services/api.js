@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://api-shortly-b5hn.onrender.com";
+/*  const BASE_URL = "https://api-shortly-b5hn.onrender.com";  */
+const BASE_URL = "http://localhost:4000";
 
 function createConfig(token) {
   const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -29,8 +30,7 @@ function getUrlById(id) {
 }
 
 function getShortenedUrl(shortUrl) {
-  const promise = axios.get(`${BASE_URL}/urls/open/${shortUrl}`);
-  return promise;
+  return `${BASE_URL}/urls/open/${shortUrl}`;
 }
 
 function deleteUrl(id, token) {

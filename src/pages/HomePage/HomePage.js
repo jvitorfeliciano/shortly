@@ -19,8 +19,6 @@ export default function HomePage() {
   const [updateUrls, setUpdateUrls] = useState(false);
   const { userData } = useContext(UserContext);
 
-  console.log(urls);
-
   async function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -46,7 +44,11 @@ export default function HomePage() {
     const getUrls = async () => {
       try {
         const res = await api.getUserUrls(userData.token);
-        setUrls(res.data.shortenedUrls);
+        if (res.data) {
+          setUrls(res.data.shortenedUrls);
+        } else {
+          setUrls([]);
+        }
       } catch (err) {
         Swal.fire({
           icon: "error",

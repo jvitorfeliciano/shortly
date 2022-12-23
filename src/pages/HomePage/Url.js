@@ -1,17 +1,28 @@
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import api from "../../services/api";
 
-export default function Url({ id, shortUrl, url, visitCount,confirmDeletetion}) {
+export default function Url({
+  id,
+  shortUrl,
+  url,
+  visitCount,
+  confirmDeletetion,
+}) {
+  
+  function navigateToUrl(shortUrl) {
+    window.open(api.getShortenedUrl(shortUrl));
+  }
 
   return (
     <UrlContainer>
       <Right>
-        <div>{url}</div>
-        <div>{shortUrl}</div>
+        <div onClick={() => navigateToUrl(shortUrl)}>{url}</div>
+        <div onClick={() => navigateToUrl(shortUrl)}>{shortUrl}</div>
         <div>Quantidade de visitantes: {visitCount}</div>
       </Right>
-      <Left onClick={()=>confirmDeletetion(id)}>
+      <Left onClick={() => confirmDeletetion(id)}>
         <FaTrashAlt />
       </Left>
     </UrlContainer>
