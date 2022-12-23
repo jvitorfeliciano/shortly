@@ -4,10 +4,11 @@ import trophy from "../../assets/images/trophy.png";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import api from "../../services/api";
+import Loader from "../Loader/Loader";
 
 export default function Ranking() {
   const [ranking, setRanking] = useState(null);
-
+  console.log(ranking);
   useEffect(() => {
     const getRanking = async () => {
       try {
@@ -25,6 +26,13 @@ export default function Ranking() {
     getRanking();
   }, []);
 
+  if (!ranking) {
+    return (
+      <LoaderContainer>
+        <Loader size={60} color={"green"} />
+      </LoaderContainer>
+    );
+  }
   return (
     <>
       <RankingLogo>
@@ -32,12 +40,25 @@ export default function Ranking() {
         <h2>Ranking</h2>
       </RankingLogo>
       <RankingContainer>
-        <ClassificationData />
+        {ranking.map((data) => (
+          <ClassificationData
+            id={data.id}
+            name={data.name}
+            linksCount={data.linksCount}
+            visitCount={data.visitCount}
+          />
+        ))}
       </RankingContainer>
     </>
   );
 }
-
+const LoaderContainer = styled.section`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const RankingLogo = styled.section`
   display: flex;
   align-items: center;

@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
-export default function ClassificationData() {
+export default function ClassificationData({
+  id,
+  name,
+  linksCount,
+  visitCount,
+}) {
   return (
     <Container>
-      <p>1. João - 32 links - 1.703.584 visualizações</p>
+      <p>
+        1. {name} - {linksCount} links -{visitCount} visualizações
+      </p>
     </Container>
   );
 }
