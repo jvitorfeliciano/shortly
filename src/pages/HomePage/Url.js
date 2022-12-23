@@ -9,10 +9,12 @@ export default function Url({
   url,
   visitCount,
   confirmDeletetion,
+  updateUrls,
+  setUpdateUrls,
 }) {
-  
   function navigateToUrl(shortUrl) {
     window.open(api.getShortenedUrl(shortUrl));
+    setUpdateUrls(!updateUrls);
   }
 
   return (

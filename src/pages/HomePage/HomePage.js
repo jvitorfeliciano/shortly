@@ -139,6 +139,8 @@ export default function HomePage() {
                 shortUrl={url.shortUrl}
                 visitCount={url.visitCount}
                 confirmDeletetion={confirmDeletetion}
+                updateUrls={updateUrls}
+                setUpdateUrls={setUpdateUrls}
               />
             ))}
           </UrlsContainer>
