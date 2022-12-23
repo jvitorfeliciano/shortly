@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import UserContext from "../../contexts/UserContext";
 import StyledLink from "../StyledLink/StyledLink";
 
 export default function Header() {
+  const { userData } = useContext(UserContext);
+ 
   return (
     <Container>
       <Greetings>Oieee</Greetings>
