@@ -17,8 +17,9 @@ export default function HomePage() {
   const [urls, setUrls] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [updateUrls, setUpdateUrls] = useState(false);
-
   const { userData } = useContext(UserContext);
+
+  console.log(urls);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -59,6 +60,36 @@ export default function HomePage() {
     }
   }, [updateUrls]);
 
+  async function deleteUrl(id) {
+    try {
+      await api.deleteUrl(id, userData.token);
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      setUpdateUrls(!updateUrls);
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+    }
+  }
+
+  function confirmDeletetion(id) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        deleteUrl(id);
+      }
+    });
+  }
+
   if (userData?.token && !urls) {
     return (
       <Container>
@@ -69,6 +100,7 @@ export default function HomePage() {
       </Container>
     );
   }
+
   return (
     <Container>
       <Logo />
@@ -99,10 +131,12 @@ export default function HomePage() {
           <UrlsContainer>
             {urls.map((url) => (
               <Url
+                key={url.id}
                 id={url.id}
                 url={url.url}
                 shortUrl={url.shortUrl}
                 visitCount={url.visitCount}
+                confirmDeletetion={confirmDeletetion}
               />
             ))}
           </UrlsContainer>

@@ -33,7 +33,7 @@ function getShortenedUrl(shortUrl) {
   return promise;
 }
 
-function deleteUrl(token, id) {
+function deleteUrl(id, token) {
   const config = createConfig(token);
   const promise = axios.delete(`${BASE_URL}/urls/${id}`, config);
   return promise;

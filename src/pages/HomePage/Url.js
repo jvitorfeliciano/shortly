@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
-export default function Url({id, shortUrl, url, visitCount}) {
+export default function Url({ id, shortUrl, url, visitCount,confirmDeletetion}) {
+
   return (
     <UrlContainer>
       <Right>
@@ -9,7 +11,7 @@ export default function Url({id, shortUrl, url, visitCount}) {
         <div>{shortUrl}</div>
         <div>Quantidade de visitantes: {visitCount}</div>
       </Right>
-      <Left>
+      <Left onClick={()=>confirmDeletetion(id)}>
         <FaTrashAlt />
       </Left>
     </UrlContainer>
