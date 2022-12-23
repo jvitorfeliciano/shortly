@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import ClassificationData from "./ClassificationData";
 import trophy from "../../assets/images/trophy.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import api from "../../services/api";
 import Loader from "../Loader/Loader";
+import UserContext from "../../contexts/UserContext";
 
 export default function Ranking() {
   const [ranking, setRanking] = useState(null);
-  console.log(ranking);
+  const { userData } = useContext(UserContext);
+
   useEffect(() => {
     const getRanking = async () => {
       try {
@@ -49,6 +51,7 @@ export default function Ranking() {
           />
         ))}
       </RankingContainer>
+      {!userData && <Message>Crie sua conta para usar nosso serviço!</Message>}
     </>
   );
 }
@@ -88,4 +91,16 @@ const RankingContainer = styled.section`
   border: 1px solid rgba(120, 177, 89, 0.25);
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
   border-radius: 24px 24px 0px 0px;
+`;
+
+const Message = styled.span`
+  width: 70vw;
+  text-align: center;
+  font-family: "Lexend Deca";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 45px;
+  color: #000000;
+  margin-top: 82px;
 `;
