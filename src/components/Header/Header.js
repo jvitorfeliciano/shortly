@@ -5,10 +5,10 @@ import StyledLink from "../StyledLink/StyledLink";
 
 export default function Header() {
   const { userData } = useContext(UserContext);
-
+ console.log(userData)
   return (
     <Container>
-      {userData && <Greetings>Oieee</Greetings>}
+      {userData && <Greetings>Seja bem-vindo(a), {userData.name}!</Greetings>}
       <Menu>
         {!userData && (
           <>
