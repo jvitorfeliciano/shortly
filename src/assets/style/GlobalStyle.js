@@ -52,6 +52,8 @@ table {
 *{
 	box-sizing: border-box;
 }
-
+body{
+	overflow-x: hidden;
+}
 `;
 export default GlobalStyle;
