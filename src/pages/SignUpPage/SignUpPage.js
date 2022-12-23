@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
 import Form from "../../components/Form/Form";
 import Input from "../../components/Input /Input";
 import Logo from "../../components/Logo/Logo";
 import api from "../../services/api";
-
 
 export default function SignUpPage() {
   const [form, setForm] = useState({
@@ -15,6 +15,7 @@ export default function SignUpPage() {
     confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   function handleFormchange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,9 +23,10 @@ export default function SignUpPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-  
+
     try {
-      const res = await api.signUp(form);
+      await api.signUp(form);
+      navigate("/");
     } catch (err) {
       console.log(err.response);
     }
