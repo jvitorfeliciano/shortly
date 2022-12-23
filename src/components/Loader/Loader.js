@@ -1,6 +1,6 @@
 import { Oval } from "react-loader-spinner";
 
-export default function Loader(size, color) {
+export default function Loader({size, color}) {
   return (
     <Oval
       height={size}
