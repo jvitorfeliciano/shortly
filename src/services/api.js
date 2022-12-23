@@ -1,7 +1,6 @@
 import axios from "axios";
 
-/*  const BASE_URL = "https://api-shortly-b5hn.onrender.com";  */
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://api-shortly-b5hn.onrender.com";
 
 function createConfig(token) {
   const config = { headers: { Authorization: `Bearer ${token}` } };

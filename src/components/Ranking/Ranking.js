@@ -43,8 +43,9 @@ export default function Ranking() {
         <h2>Ranking</h2>
       </RankingLogo>
       <RankingContainer>
-        {ranking.map((data) => (
+        {ranking.map((data, index) => (
           <ClassificationData
+            index={index}
             key={data.id}
             id={data.id}
             name={data.name}

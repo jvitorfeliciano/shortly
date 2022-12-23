@@ -60,7 +60,7 @@ export default function HomePage() {
     if (userData?.token) {
       getUrls();
     }
-  }, [updateUrls]);
+  }, [updateUrls, userData]);
 
   async function deleteUrl(id) {
     try {

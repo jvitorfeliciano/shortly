@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyle from "./assets/style/GlobalStyle";
 import Header from "./components/Header/Header";
@@ -10,6 +10,13 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 function App() {
   const [userData, setUserData] = useState(undefined);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    if (storedData) {
+      setUserData(storedData);
+    }
+  }, []);
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>

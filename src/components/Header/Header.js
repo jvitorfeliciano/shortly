@@ -11,6 +11,7 @@ export default function Header() {
 
   function logOut() {
     setUserData(undefined);
+    localStorage.removeItem("userData");
     navigate("/");
   }
 

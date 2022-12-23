@@ -19,7 +19,9 @@ export default function SignInPage() {
   function handleFormChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-
+  function saveDataToLocalStorage(obj) {
+    localStorage.setItem("userData",JSON.stringify(obj));
+  }
   async function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -27,8 +29,10 @@ export default function SignInPage() {
     try {
       const res = await api.signIn(form);
       setUserData(res.data);
+      console.log(res.data)
       setIsLoading(false);
       navigate("/");
+      saveDataToLocalStorage(res.data);
     } catch (err) {
       Swal.fire({
         icon: "error",

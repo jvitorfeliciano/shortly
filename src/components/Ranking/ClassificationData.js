@@ -4,12 +4,12 @@ export default function ClassificationData({
   id,
   name,
   linksCount,
-  visitCount,
+  visitCount, index
 }) {
   return (
     <Container>
       <p>
-        1. {name} - {linksCount} links -{visitCount} visualizações
+        {index+1}. {name} - {linksCount} links - {visitCount} visualizações
       </p>
     </Container>
   );
