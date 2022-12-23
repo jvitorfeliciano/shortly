@@ -10,7 +10,7 @@ import UserContext from "../../contexts/UserContext";
 export default function Ranking() {
   const [ranking, setRanking] = useState(null);
   const { userData } = useContext(UserContext);
-
+  console.log("RANKIIIING");
   useEffect(() => {
     const getRanking = async () => {
       try {
@@ -44,6 +44,7 @@ export default function Ranking() {
       <RankingContainer>
         {ranking.map((data) => (
           <ClassificationData
+            key={data.id}
             id={data.id}
             name={data.name}
             linksCount={data.linksCount}

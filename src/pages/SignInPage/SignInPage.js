@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
 import Form from "../../components/Form/Form";
@@ -8,10 +8,12 @@ import api from "../../services/api";
 import Swal from "sweetalert2";
 import Loader from "../../components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 
 export default function SignInPage() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const { setUserData } = useContext(UserContext);
   const navigate = useNavigate("/");
 
   function handleFormChange(e) {
@@ -23,7 +25,8 @@ export default function SignInPage() {
     setIsLoading(true);
 
     try {
-      await api.signIn(form);
+      const res = await api.signIn(form);
+      setUserData(res.data);
       setIsLoading(false);
       navigate("/");
     } catch (err) {
