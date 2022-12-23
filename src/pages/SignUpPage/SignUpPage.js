@@ -4,6 +4,8 @@ import Container from "../../components/Container/Container";
 import Form from "../../components/Form/Form";
 import Input from "../../components/Input /Input";
 import Logo from "../../components/Logo/Logo";
+import api from "../../services/api";
+
 
 export default function SignUpPage() {
   const [form, setForm] = useState({
@@ -12,15 +14,26 @@ export default function SignUpPage() {
     password: "",
     confirmPassword: "",
   });
-  console.log(form);
+  const [isLoading, setIsLoading] = useState(false);
+
   function handleFormchange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+  
+    try {
+      const res = await api.signUp(form);
+    } catch (err) {
+      console.log(err.response);
+    }
   }
 
   return (
     <Container>
       <Logo />
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           placeholder="Nome"

@@ -1,9 +1,6 @@
-import dotenv from "dotenv";
 import axios from "axios";
 
-dotenv.config();
-
-const BASE_URL = process.env.API_SHORTLY;
+const BASE_URL = "https://api-shortly-b5hn.onrender.com";
 
 function createConfig(token) {
   const config = { headers: { Authorization: `Bearer ${token}` } };
