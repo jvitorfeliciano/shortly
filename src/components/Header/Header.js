@@ -29,6 +29,7 @@ const BaseFormat = styled.div`
   position: absolute;
   bottom: 0;
 `;
+
 const Greetings = styled(BaseFormat)`
   left: 250px;
   color: #5d9040;

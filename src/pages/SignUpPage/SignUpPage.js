@@ -1,6 +1,6 @@
-import { Form } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
+import Form from "../../components/Form/Form";
 import Input from "../../components/Input /Input";
 import Logo from "../../components/Logo/Logo";
 
@@ -13,7 +13,9 @@ export default function SignUpPage() {
         <Input type="email" placeholder="E-mail" required />
         <Input type="password" placeholder="Senha" required />
         <Input type="password" placeholder="Confirmar senha" required />
-        <Button type="submit">Criar conta</Button>
+        <Button marginTop={"61px"} marginLeft={"0px"} type="submit">
+          Criar conta
+        </Button>
       </Form>
     </Container>
   );

@@ -9,9 +9,11 @@ export default function SignInPage() {
     <Container>
       <Logo />
       <Form>
-        <Input type="email" placeholder="E-mail" required />
-        <Input type="password" placeholder="Senha" required />
-        <Button>Entrar</Button>
+        <Input width={"100%"} type="email" placeholder="E-mail" required />
+        <Input width={"100%"} type="password" placeholder="Senha" required />
+        <Button marginTop={"61px"} marginLeft={"0px"}>
+          Entrar
+        </Button>
       </Form>
     </Container>
   );
