@@ -7,7 +7,7 @@ import Input from "../../components/Input /Input";
 import Loader from "../../components/Loader/Loader";
 import Logo from "../../components/Logo/Logo";
 import api from "../../services/api";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 export default function SignUpPage() {
   const [form, setForm] = useState({
@@ -34,10 +34,10 @@ export default function SignUpPage() {
     } catch (err) {
       setIsLoading(false);
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
     }
   }
 
