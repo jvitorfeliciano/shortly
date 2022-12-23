@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import api from "../../services/api";
 import Loader from "../Loader/Loader";
 import UserContext from "../../contexts/UserContext";
+import LoaderContainer from "../LoaderContainer/LoaderContainer";
 
 export default function Ranking() {
   const [ranking, setRanking] = useState(null);
@@ -56,13 +57,7 @@ export default function Ranking() {
     </>
   );
 }
-const LoaderContainer = styled.section`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+
 const RankingLogo = styled.section`
   display: flex;
   align-items: center;

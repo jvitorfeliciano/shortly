@@ -10,6 +10,7 @@ import Ranking from "../../components/Ranking/Ranking";
 import Swal from "sweetalert2";
 import api from "../../services/api";
 import Loader from "../../components/Loader/Loader";
+import LoaderContainer from "../../components/LoaderContainer/LoaderContainer";
 
 export default function HomePage() {
   const [url, setUrl] = useState("");
@@ -59,7 +60,14 @@ export default function HomePage() {
   }, [updateUrls]);
 
   if (userData?.token && !urls) {
-    return <Loader size={60} color={"green"} />;
+    return (
+      <Container>
+        <Logo />
+        <LoaderContainer>
+          <Loader size={60} color={"green"} />
+        </LoaderContainer>
+      </Container>
+    );
   }
   return (
     <Container>
