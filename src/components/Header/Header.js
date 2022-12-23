@@ -1,11 +1,19 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
 import StyledLink from "../StyledLink/StyledLink";
 
 export default function Header() {
   const { userData } = useContext(UserContext);
-  
+  const navigate = useNavigate();
+  const { setUserData } = useContext(UserContext);
+
+  function logOut() {
+    setUserData(undefined);
+    navigate("/");
+  }
+
   return (
     <Container>
       {userData && <Greetings>Seja bem-vindo(a), {userData.name}!</Greetings>}
@@ -28,7 +36,7 @@ export default function Header() {
             <StyledLink to="/ranking">
               <div>Ranking</div>
             </StyledLink>
-            <StyledLink>
+            <StyledLink onClick={logOut}>
               <div>Sair</div>
             </StyledLink>
           </>
