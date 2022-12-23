@@ -15,6 +15,8 @@ const Button = styled.button`
   color: #ffffff;
   border: none;
   cursor: pointer;
+  pointer-events: ${props => props.isLoading?"none":""};
+  opacity: ${props => props.isLoading?"0.5":"1"};
 `;
 
 export default Button;
